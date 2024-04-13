@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.example.grpc";
+option java_outer_classname = "NumberSequenceProto";
+
+package numbers;
+
+// Определение сервиса
+service NumberSequence {
+  // RPC метод для получения последовательности чисел
+  rpc GetNumberSequence(NumberRange) returns (stream Number) {}
+}
+
+// Сообщение, описывающее диапазон чисел
+message NumberRange {
+  int32 firstValue = 1;
+  int32 lastValue = 2;
+}
+
+// Сообщение, представляющее число
+message Number {
+  int32 value = 1;
+}
